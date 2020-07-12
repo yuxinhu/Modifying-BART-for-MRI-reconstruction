@@ -1,6 +1,10 @@
 # Modifying-BART-for-MRI-reconstruction
 
-BART is a reconstruction tool for magnetic resonance imaging. One good thing of using BART is that it provides different solvers (e.g., ISTA, POCS, FISTA, ADMM) to solve the problem in the following format,
+[BART](https://mrirecon.github.io/bart/) is a reconstruction tool for magnetic resonance imaging. One good thing of using BART is that it provides different solvers (e.g., ISTA, POCS, FISTA, ADMM) to solve the problem in the following format,
+
+<div align="left">
+  <img = src="pics/fig1.png" width=“300px” />
+</div>
 
 
 where D is the sampling operator in k-space, F is Fourier transform (FT) or NUFFT based on the sampling tranjectory, S is the sensitivity encoding operator, x is the image to be reconstructed, y is acquired k-space data, $P_m$ and $T_m$ define the regularization terms.

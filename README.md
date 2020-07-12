@@ -20,12 +20,12 @@ The first term is the data consistency term, which is about how the data is acqu
 
 The input to the solver (which is the pics function) is simply the k-space (y) and sensitivity map (S), and it will output the image (x). While you need to define what regularization terms you want to use (check by '-h' option or read the code). I have a list of the existed terms in slide 2 in "pics/BART.pptx". You may want to check their website for the latest versions.
 
-There are several algorithms to solve this kind of problems (L2 term + constraints). FISTA and ADMM have been implemented in BART. I would recommend [Prof. Stephen Boyd's convex optimization class](http://web.stanford.edu/class/ee364a/) and book if you have interest in how these algorithms work.
+There are several algorithms to solve this kind of problems (L2 term + constraints). FISTA and ADMM have been implemented in BART. I would recommend [Prof. Stephen Boyd's convex optimization class](http://web.stanford.edu/class/ee364a/) and book if you have interest in how these algorithms work. Here we only need to know that only proximal operator of the regularization is needed for these algorithms.
 
 ## How to write you own reconstruction based on BART
-The good thing of BART is that it has well implementation of these algorithms. To you have own reconstruction, usually, you only need to define some operators: (1) linear operators in the data consistency term, (2) the [proximal operator](https://en.wikipedia.org/wiki/Proximal_operator) for the regularization term.
+The good thing of BART is that it has well implementation of these algorithms. To you have own reconstruction, usually, you only need to define some operators: (1) linear operators in the data consistency term, (2) the [proximal operator](https://en.wikipedia.org/wiki/Proximal_operator) for the regularization term. 
 
-The previous loss function can be simplied as the following one:,
+The previous loss function can be simplied as the following one:
 <div align="left">
   <img = src="pics/fig2.png" width=“50px” />
 </div>

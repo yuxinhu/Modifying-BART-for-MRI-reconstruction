@@ -3,7 +3,7 @@
 [BART](https://mrirecon.github.io/bart/) is a reconstruction tool for magnetic resonance imaging. One good thing of using BART is that it provides different solvers (e.g., ISTA, POCS, FISTA, ADMM) to solve the problem in the following format,
 
 <div align="left">
-  <img = src="pics/fig1.png" width=“300px” />
+  <img = src="pics/fig1.png" width=“50px” />
 </div>
 
 

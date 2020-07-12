@@ -35,7 +35,7 @@ Then the next part is about the regularization term, BART is very flexible since
 
 (1) one regularization term on the low-rank component, which is pretty the same as previous low-rank operator except we need to change the identity transform to a linear transform that takes the low-rank part;
 
-(1) the other regularization term on the sparse component. Similarly, this is pretty the same as the previous l1-loss operator, except we need to change the identity transform to a linear transform that takes the sparse part.
+(2) the other regularization term on the sparse component. Similarly, this is pretty the same as the previous l1-loss operator, except we need to change the identity transform to a linear transform that takes the sparse part.
 
 You also probably need to name your new constraint in the function, and I would suggest you just to follow BART's implementation. Then you can run your own reconstruction. 
 

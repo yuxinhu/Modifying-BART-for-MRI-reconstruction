@@ -1,6 +1,6 @@
 # Modifying-BART-for-MRI-reconstruction
 
-[BART](https://mrirecon.github.io/bart/) is a well-designed reconstruction tool for magnetic resonance imaging. There are also plenty examples on their website explaining how to use BART. Here, I want to explain my understanding of BART (more specifically, the pics function in BART), hopefully it will make the use of BART eaiser for you, and even help you implementation you own reconstruction method. 
+[BART](https://mrirecon.github.io/bart/) is a well-designed reconstruction tool for magnetic resonance imaging. There are also plenty examples on their website explaining how to use BART. Here, I want to explain my understanding of BART (more specifically, the pics function in BART), hopefully it will make the use of BART eaiser for you, and even help you implemente you own reconstruction method. 
 
 
 

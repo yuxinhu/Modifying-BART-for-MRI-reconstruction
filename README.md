@@ -53,7 +53,13 @@ One minor change in function sense_recon2 in recon.c is to add one variable img_
 For the regularization term, it is pretty similar to the original locally low-rank term and the L1-wavelet term, except we need to define the corresponding linear transforms. These transforms will take the needed part from the final output (size Nx-Ny-(Nt+1)). These two transforms are defined in someops.c (yuxinT1 and yuxinT2), and are called in pics.c.
 
 ## Usage
-Download the complete code of BART (version 0.3.01). Replace recon.c, recon.h (under /src/sense), someopsc. someops.h (under /src/linops), pics.c (under src) with ones here. 
+Download the complete code of BART (version 0.3.01). Replace recon.c, recon.h (under /src/sense), someopsc. someops.h (under /src/linops), pics.c (under src) with ones in folders in Modified_files. If you want to see what change we made, search "yuxin" in the code or compare with the original files. 
+
+The compiled modified BART (in Linux) is also uploaded, and by running demo_ls.m, you should be able to get the following results (no ghosting artifacts).
+
+<div align="left">
+  <img = src="pics/Result.png" width=“300px” />
+</div>
 
 ## Notes
 I would suggest you think careufully before you want to make some changes in BART, about where to make these changes, and how to organize the dimension of the data. Usually lots of previous code can be used as a reference.

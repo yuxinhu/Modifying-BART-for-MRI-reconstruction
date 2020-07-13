@@ -50,7 +50,10 @@ For the data consistency term, we need to define a linear transform which output
 
 One minor change in function sense_recon2 in recon.c is to add one variable img_dims as the input of the function, which contains the size of the new output (add the time dimension by 1).
 
-For the regularization term, it is pretty similar to the orignal locally low-rank term and the L1-wavelet term, except we need to define the corresponding linear transforms. These transforms will take the needed part from the final output (size Nx-Ny-(Nt+1)). These two transforms are defined in someops.c (yuxinT1 and yuxinT2), and are called in pics.c.
+For the regularization term, it is pretty similar to the original locally low-rank term and the L1-wavelet term, except we need to define the corresponding linear transforms. These transforms will take the needed part from the final output (size Nx-Ny-(Nt+1)). These two transforms are defined in someops.c (yuxinT1 and yuxinT2), and are called in pics.c.
+
+## Usage
+Download the complete code of BART (version 0.3.01). Replace recon.c, recon.h (under /src/sense), someopsc. someops.h (under /src/linops), pics.c (under src) with ones here. 
 
 ## Notes
 I would suggest you think careufully before you want to make some changes in BART, about where to make these changes, and how to organize the dimension of the data. Usually lots of previous code can be used as a reference.

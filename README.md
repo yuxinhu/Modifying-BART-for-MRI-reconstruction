@@ -29,7 +29,9 @@ The previous loss function can be simplified as the following one:
 <div align="left">
   <img = src="pics/fig2.png" width=“50px” />
 </div>
+
 where A is the combination of sampling (D), Fourier transform (F), and sensitivity encoding (S) operators (track the "forward_op" in pics.c). What BART does in pics is first to define each operator and then chain/combine them with the "linop_chain" operator. For the low-rank + sparse reconstruction, we only need to add another linear operator (T) before the sensitivity encoding operator, which sums up these two components. If you only want to change the regularization term, you do not even need to touch this part. 
+
 
 Then the next part is about the regularization term, BART is very flexible since it requires a linear transform operator (T) associated with each regularization term (usually it is identity operator). Again for the low-rank + sparse reconstruction, we want to have 
 
@@ -41,5 +43,16 @@ You also probably need to name your new constraint in the function, and I would 
 
 To summarize, to implementation your own reconstruction (BART may not be a good option for some complicated exponential models or non-linear models?), you only need to define you own linear transform operator (for both the data consistency term and the regularization term), and the proximal operator of the regularization term. BART has implemented many linear operators under /scr/linops and many proximal operators under /src/iter. I would suggest you do a survey before you implement your owns.
 
+## Low rank + sparse model as an example
+In this model, we assume the multi-frame image we have is composed by two components: low-rank component which has the same size of the multi-frame image (Nx-Ny-Nt), sparse component which only has 1 time frame. So the size of the output should be Nx-Ny-(Nt+1).
+
+For the data consistency term, we need to define a linear transform which outputs the final image given these two components. This operator (named yuxinT0) is defined in someops.c, similar to other operators in BART. It will be chained with the forward_op operator as the forward operator in the data consistency term (in pics.c).
+
+One minor change in function sense_recon2 in recon.c is to add one variable img_dims as the input of the function, which contains the size of the new output (add the time dimension by 1).
+
+For the regularization term, it is pretty similar to the orignal locally low-rank term and the L1-wavelet term, except we need to define the corresponding linear transforms. These transforms will take the needed part from the final output (size Nx-Ny-(Nt+1)). These two transforms are defined in someops.c (yuxinT1 and yuxinT2), and are called in pics.c.
+
 ## Notes
-The plan for this repository is to share my implementation of low-rank + sparse reconstruction based on BART. However, very unfortunately, I could not find my implementation (this is probably one reason why I should use Github). But the implementation should be pretty straightforward after you understand how BART works and what changes you want to make. Hopefully, the comments are helpful enough, so you do not need to suffer my code. 
+I would suggest you think careufully before you want to make some changes in BART, about where to make these changes, and how to organize the dimension of the data. Usually lots of previous code can be used as a reference.
+
+<!---The plan for this repository is to share my implementation of low-rank + sparse reconstruction based on BART. However, very unfortunately, I could not find my implementation (this is probably one reason why I should use Github). But the implementation should be pretty straightforward after you understand how BART works and what changes you want to make. Hopefully, the comments are helpful enough, so you do not need to suffer my code. --->
